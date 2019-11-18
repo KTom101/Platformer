@@ -37,6 +37,11 @@ glm::mat4 viewMatrix, modelMatrix, projectionMatrix;
 Scene *currentScene;
 Scene *sceneList[4];
 Mix_Music *music;
+Mix_Music *win;
+Mix_Chunk *selection;
+Mix_Chunk *jumping;
+Mix_Chunk *success;
+Mix_Chunk *fail;
 
 void SwitchToScene(Scene *scene) {
     currentScene = scene;
@@ -61,9 +66,21 @@ void Initialize() {
     int Mix_OpenAudio(int frequency, Uint16 format, int channels,
                       int chunksize);
     Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096);
-    music = Mix_LoadMUS("jazz.wav");
+    music = Mix_LoadMUS("music.mp3");
     Mix_PlayMusic(music, -1);
-    Mix_VolumeMusic(MIX_MAX_VOLUME / 2);
+    Mix_VolumeMusic(MIX_MAX_VOLUME / 3);
+    
+    selection = Mix_LoadWAV("click.wav");
+    Mix_VolumeChunk(selection, MIX_MAX_VOLUME / 4);
+    
+    jumping = Mix_LoadWAV("jumping.wav");
+    Mix_VolumeChunk(jumping, MIX_MAX_VOLUME / 4);
+    
+    success = Mix_LoadWAV("success.wav");
+    Mix_VolumeChunk(success, MIX_MAX_VOLUME / 4);
+    
+    fail = Mix_LoadWAV("lost.wav");
+    Mix_VolumeChunk(fail, MIX_MAX_VOLUME / 4);
     glViewport(0, 0, 640, 480);
     
     program.Load("shaders/vertex_textured.glsl", "shaders/fragment_textured.glsl");
@@ -106,6 +123,7 @@ void ProcessInput() {
             case SDL_KEYDOWN:
                 switch (event.key.keysym.sym) {
                     case SDLK_SPACE:
+                         Mix_PlayChannel(-1, jumping, 0);
                         currentScene->state.player.Jump();
                         break;
                         
@@ -129,6 +147,7 @@ void ProcessInput() {
     }
     else if (keys[SDL_SCANCODE_RETURN]){
         if(currentScene == sceneList[0]){
+            Mix_PlayChannel(-1, selection, 0);
             sceneList[0]->state.nextLevel = 1;
         }
     }
@@ -179,17 +198,20 @@ void Render() {
     
     if (currentScene == sceneList[0]){
         
-        Util::DrawText(&program, fontTextureID, "WELCOME", 1.0f, -0.5f, glm::vec3(2, -1, 0));
+        Util::DrawText(&program, fontTextureID, "PLATFORMER", 1.0f, -0.5f, glm::vec3(2, -1, 0));
         Util::DrawText(&program, fontTextureID, "press ENTER to start", 0.9f, -0.5f, glm::vec3(2, -2.0, 0));
     }
     
     if (currentScene->state.player.win){
+        Mix_HaltMusic();
         Util::DrawText(&program, fontTextureID, "YOU WON!!", 1.0f, -0.5f, glm::vec3(3, -1, 0));
       
     }
     
     
     if (currentScene->state.player.lives == 0){
+        Mix_HaltMusic();
+        //Mix_PlayChannel(-1, fail, 0);
         Util::DrawText(&program, fontTextureID, "YOU LOST!!", 1.0f, -0.5f, glm::vec3(2, -1, 0));
         Mix_HaltMusic();
         //return;
@@ -213,6 +235,10 @@ void Render() {
 
 void Shutdown() {
     Mix_FreeMusic(music);
+    Mix_FreeChunk(selection);
+    Mix_FreeChunk(jumping);
+    Mix_FreeChunk(success);
+    Mix_FreeChunk(fail);
     SDL_Quit();
 }
 

@@ -56,9 +56,8 @@ public:
     void Render(ShaderProgram *program);
     
     void Jump();
-   // void AIRunner(Entity player);
-    void AIPatroler(Entity player);
-    void AI(Entity player);
+    void AIRunner(Entity player);
+
     bool collidedTop;
     bool collidedBottom;
     bool collidedLeft;

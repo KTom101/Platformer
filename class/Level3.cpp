@@ -35,17 +35,13 @@ void Level3::Initialize() {
     state.enemy.isStatic = false;
     state.enemy.width = 1.0f;
     state.enemy.position = glm::vec3(9, -5, 0);
-    //state.enemy.velocity = glm::vec3(1.0f ,0,0);
     state.enemy.acceleration = glm::vec3(0, -9.81f, 0);
-    state.enemy.aiState = PATROLING;
-    state.enemy.aiType = PATROLER;
-    //state.enemy.aiState =
     
 }
 
 void Level3::Update(float deltaTime) {
     state.player.Update(deltaTime, &state.enemy, 1, state.map);
-    
+   
     if (state.player.lives >= 0){
         state.player.death = true;
     }
@@ -55,10 +51,11 @@ void Level3::Update(float deltaTime) {
         state.player.win = true;
     }
     
-//    if (state.enemy.position.x == 9.0f) state.enemy.velocity.x = -1.0f;
-//    else if (state.enemy.position.x == 1.0f) state.enemy.velocity.x = 1.0f;
+    if (state.enemy.position.x == 9.0f) state.enemy.velocity.x = -1.0f;
+    else if (state.enemy.position.x == 1.0f) state.enemy.velocity.x = 1.0f;
 
-    
+    state.enemy.Update(deltaTime, &state.player, 1, state.map);
+
 
 }
 

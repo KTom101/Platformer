@@ -27,8 +27,13 @@
 		3BBDFE502369E11500EB7BE4 /* Scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BBDFE4E2369E11500EB7BE4 /* Scene.cpp */; };
 		3BBDFE532369E15E00EB7BE4 /* Level1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BBDFE512369E15E00EB7BE4 /* Level1.cpp */; };
 		3BBDFE562369E42300EB7BE4 /* Level2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3BBDFE542369E42200EB7BE4 /* Level2.cpp */; };
-		4D9437BA237E675B00514C37 /* music.mp3 in Sources */ = {isa = PBXBuildFile; fileRef = 4D9437B9237E674F00514C37 /* music.mp3 */; };
-		4D9437BC237F2DCF00514C37 /* jazz.wav in Sources */ = {isa = PBXBuildFile; fileRef = 4D9437BB237F2DCA00514C37 /* jazz.wav */; };
+		4D692ED52380C04500553328 /* jazz.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D9437BB237F2DCA00514C37 /* jazz.wav */; };
+		4D692ED62380C04800553328 /* music.mp3 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D9437B9237E674F00514C37 /* music.mp3 */; };
+		4D692ED82380FE4300553328 /* click.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D692ED72380FE3B00553328 /* click.wav */; };
+		4D692EDA2380FFBE00553328 /* jumping.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D692ED92380FFB900553328 /* jumping.wav */; };
+		4D692EDC238100A900553328 /* success.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D692EDB2381009A00553328 /* success.wav */; };
+		4D692EDE2381027D00553328 /* lost.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D692EDD2381027000553328 /* lost.wav */; };
+		4D692EE02381080900553328 /* win.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4D692EDF2381080400553328 /* win.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,9 +45,16 @@
 			files = (
 				3B8620B42371399C00862003 /* evilred.png in CopyFiles */,
 				3B84FF4323673F6D006B1075 /* shaders in CopyFiles */,
+				4D692ED62380C04800553328 /* music.mp3 in CopyFiles */,
 				3BBDFE4A2369D9F100EB7BE4 /* font.png in CopyFiles */,
+				4D692ED52380C04500553328 /* jazz.wav in CopyFiles */,
+				4D692ED82380FE4300553328 /* click.wav in CopyFiles */,
+				4D692EE02381080900553328 /* win.wav in CopyFiles */,
+				4D692EDA2380FFBE00553328 /* jumping.wav in CopyFiles */,
+				4D692EDE2381027D00553328 /* lost.wav in CopyFiles */,
 				3B84FF4423673FB0006B1075 /* tileset.png in CopyFiles */,
 				3B84FF4523673FB3006B1075 /* me.png in CopyFiles */,
+				4D692EDC238100A900553328 /* success.wav in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,11 @@
 		3BBDFE522369E15E00EB7BE4 /* Level1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level1.h; sourceTree = "<group>"; };
 		3BBDFE542369E42200EB7BE4 /* Level2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Level2.cpp; sourceTree = "<group>"; };
 		3BBDFE552369E42200EB7BE4 /* Level2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Level2.h; sourceTree = "<group>"; };
+		4D692ED72380FE3B00553328 /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
+		4D692ED92380FFB900553328 /* jumping.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jumping.wav; sourceTree = "<group>"; };
+		4D692EDB2381009A00553328 /* success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = success.wav; sourceTree = "<group>"; };
+		4D692EDD2381027000553328 /* lost.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lost.wav; sourceTree = "<group>"; };
+		4D692EDF2381080400553328 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
 		4D9437B9237E674F00514C37 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		4D9437BB237F2DCA00514C37 /* jazz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jazz.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +138,11 @@
 		3B84FF0723673E70006B1075 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				4D692EDF2381080400553328 /* win.wav */,
+				4D692EDD2381027000553328 /* lost.wav */,
+				4D692EDB2381009A00553328 /* success.wav */,
+				4D692ED92380FFB900553328 /* jumping.wav */,
+				4D692ED72380FE3B00553328 /* click.wav */,
 				4D9437BB237F2DCA00514C37 /* jazz.wav */,
 				4D9437B9237E674F00514C37 /* music.mp3 */,
 				3B84FF3323673F3D006B1075 /* stb_image.h */,
@@ -233,8 +255,6 @@
 				3BBDFE4D2369DA1E00EB7BE4 /* Util.cpp in Sources */,
 				3BBDFE532369E15E00EB7BE4 /* Level1.cpp in Sources */,
 				3B78706B236B3CC4008F0A78 /* Level0.cpp in Sources */,
-				4D9437BC237F2DCF00514C37 /* jazz.wav in Sources */,
-				4D9437BA237E675B00514C37 /* music.mp3 in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,6 +29,7 @@ void Level2::Initialize() {
 
     
     state.nextLevel = -1;
+
 }
 
 void Level2::Update(float deltaTime) {
@@ -39,6 +40,7 @@ void Level2::Update(float deltaTime) {
     if (state.player.position.x > 24){
         state.nextLevel = 3;
     }
+
 }
 
 void Level2::Render(ShaderProgram *program) {

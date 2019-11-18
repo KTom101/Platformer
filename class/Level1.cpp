@@ -27,6 +27,12 @@ void Level1::Initialize() {
 
     
     state.nextLevel = -1;
+    state.enemy.textureID = Util::LoadTexture("evilred.png");
+    state.enemy.entityType = ENEMY;
+    state.enemy.isStatic = false;
+    state.enemy.width = 1.0f;
+    state.enemy.position = glm::vec3(15, -4, 0);
+    state.enemy.acceleration = glm::vec3(0, -9.81f, 0);
 }
 
 void Level1::Update(float deltaTime) {
@@ -36,9 +42,14 @@ void Level1::Update(float deltaTime) {
     if (state.player.position.x > 24){
         state.nextLevel = 2;
     }
+    if (state.enemy.position.x == 15.0f && (glm::distance(state.enemy.position, state.player.position) < 6.0f)) state.enemy.velocity.x = 1.0f;
+    else if (state.enemy.position.x == 1.0f) state.enemy.velocity.x = 1.0f;
+
+    state.enemy.Update(deltaTime, &state.player, 1, state.map);
 }
 
 void Level1::Render(ShaderProgram *program) {
     state.map->Render(program);
     state.player.Render(program);
+    if (state.enemy.death != true) state.enemy.Render(program);
 }

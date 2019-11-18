@@ -74,7 +74,7 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
         {
             float xdist = fabs(position.x - object.position.x);
             float penetrationX = fabs(xdist - (width / 2) - (object.width / 2));
-            if (velocity.x > 0) {
+            if (velocity.x >= 0) {
                 position.x -= penetrationX;
                 velocity.x = 0;
                 collidedRightEnemy = true;
@@ -84,7 +84,7 @@ void Entity::CheckCollisionsX(Entity *objects, int objectCount)
                 
                 
             }
-            else if (velocity.x < 0) {
+            else if (velocity.x <= 0) {
                 position.x += penetrationX;
                 velocity.x = 0;
                 collidedLeftEnemy = true;
@@ -173,37 +173,13 @@ void Entity::Jump()
     }
 }
 
-//void Entity::AIRunner(Entity player){
-//
-//    if (position.x == 9.0f) velocity.x = -1.0f;
-//    else if (position.x == 1.0f) velocity.x = 1.0f;
-//
-//}
-void Entity::AIPatroler(Entity player){
-    switch (aiState) {
-        case IDLE:
-            break;
-        case PATROLING:
-            velocity.x = -1.0f;
-    
-            if(collidedRight){
-                velocity.x = 1.0f;
-            }
-            if(collidedLeft){
-                velocity.x = 2.0f;
-            }
-            break;
-    }
-    
+void Entity::AIRunner(Entity player){
+
+    if (position.x == 9.0f) velocity.x = -1.0f;
+    else if (position.x == 1.0f) velocity.x = 1.0f;
+
 }
 
-void Entity::AI(Entity player){
-    switch(aiType){
-        case PATROLER:
-            AIPatroler(player);
-            break;
-    }
-}
 
 void Entity::Update(float deltaTime, Entity *objects, int objectCount, Map *map)
 {
